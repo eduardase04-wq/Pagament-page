@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#5b0b10">
+<title>Year 12 Graduation Party | Pagamento do convite</title>
+<style>
+:root {
+  --wine:#5b0b10; --wine-dark:#3d070a; --cream:#f7f0e5; --paper:#fffaf2;
+  --beige:#ead8c2; --ink:#241414; --muted:#725d55; --line:#ddc8b0;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#eee9e1;color:var(--ink);font-family:Arial,Helvetica,sans-serif}
+button,a{font:inherit}
+button{cursor:pointer}
+.page{max-width:760px;margin:0 auto;background:var(--cream);min-height:100vh;box-shadow:0 0 30px #00000012}
+.hero{background:radial-gradient(ellipse at 50% 120%,#7b1b20 0,#5b0b10 62%,#390508 100%);color:#f9efdf;text-align:center;padding:24px 20px 34px;position:relative;overflow:hidden}
+.hero:before,.hero:after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.15;background-image:repeating-linear-gradient(135deg,transparent 0 32px,#e8d6c4 33px,transparent 34px 70px)}
+.hero:after{opacity:.08;background:radial-gradient(circle at 20% 30%,#f7e9d5 0 1px,transparent 2px);background-size:27px 27px}
+.brand{position:relative;z-index:1;font-family:Georgia,'Times New Roman',serif;letter-spacing:.08em;font-size:clamp(2.3rem,9vw,4.2rem);line-height:.9;font-weight:bold}
+.brand small{display:block;font-family:cursive;font-style:italic;font-size:clamp(1.5rem,6vw,2.4rem);font-weight:normal;letter-spacing:0;margin-top:8px}
+.brand em{display:block;font-family:Georgia,serif;font-style:normal;font-size:.27em;letter-spacing:.28em;margin-top:8px}
+.paper-edge{height:20px;background:var(--cream);margin-top:-2px;clip-path:polygon(0 35%,7% 55%,14% 35%,23% 65%,32% 30%,41% 58%,51% 26%,61% 58%,70% 34%,81% 63%,90% 32%,100% 48%,100% 100%,0 100%)}
+.content{padding:16px clamp(16px,4vw,34px) 32px}
+h1,h2{font-family:Georgia,'Times New Roman',serif;color:var(--wine);text-align:center;font-weight:normal}
+h1{font-size:clamp(2rem,6vw,3rem);margin:2px 0 10px}
+h2{font-size:clamp(1.8rem,5vw,2.5rem);margin:4px 0 10px}
+.intro{text-align:center;line-height:1.5;margin:0 auto 18px;max-width:560px;font-size:1.03rem}
+.deadline{background:#eddfcd;border-radius:14px;text-align:center;padding:12px 14px;margin:0 auto 18px;font-size:.98rem;line-height:1.5}
+.deadline strong{color:var(--wine)}
+.card{background:#fffaf3d9;border:1px solid #e6d5c3;border-radius:18px;padding:18px;margin:14px 0;box-shadow:0 5px 18px #4b1b1010}
+.payment-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:center}
+.qr-wrap{text-align:center}
+.qr{display:block;width:min(100%,250px);height:auto;margin:0 auto 10px;border-radius:12px;background:#fff;padding:8px}
+.qr-caption{font-size:.9rem;line-height:1.4;margin:0 auto;max-width:230px}
+.details{border-left:1px solid var(--line);padding-left:18px;overflow-wrap:anywhere}
+.detail-label{font-size:.92rem;font-weight:bold;color:var(--wine);margin:0 0 5px}
+.detail-value{font-size:1rem;line-height:1.45;margin:0 0 18px}
+.amount{font-family:Georgia,'Times New Roman',serif;color:var(--wine);font-size:clamp(2rem,6vw,2.8rem);margin:4px 0 0;white-space:nowrap}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;border:0;border-radius:13px;padding:16px 18px;background:var(--wine);color:#fff8ed;font-weight:bold;text-decoration:none;text-align:center;margin:12px 0;min-height:54px;transition:transform .12s,background .12s}
+.btn:hover{background:#74141a}.btn:active{transform:scale(.99)}
+.btn.secondary{background:#eddfcd;color:var(--wine);border:1px solid #ddc6ad}
+.btn.outline{background:transparent;color:var(--wine);border:1px solid var(--line)}
+.key-field{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:#fffaf3;overflow-wrap:anywhere}
+.key-field code{font-family:Arial,Helvetica,sans-serif;flex:1;min-width:0;font-size:.95rem}
+.icon-button{background:transparent;border:0;color:var(--wine);font-size:1.25rem;padding:4px}
+.note{background:#f0e0d0;border-radius:14px;padding:14px 16px;font-size:.9rem;line-height:1.55;margin:18px 0}
+.note ul{margin:0;padding-left:19px}
+.steps-title{display:flex;align-items:center;gap:12px;justify-content:center;color:var(--wine);font-family:Georgia,serif;font-size:1.35rem;margin:28px 0 16px}
+.steps-title:before,.steps-title:after{content:"";height:1px;background:var(--wine);flex:1}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;text-align:center;line-height:1.45}
+.step-num{width:34px;height:34px;border-radius:50%;background:#e3c9a9;display:grid;place-items:center;margin:0 auto 8px;font-family:Georgia,serif;font-size:1.2rem}
+.hidden{display:none!important}
+.page2 .qr{max-width:270px;margin-top:14px}
+.success-note{text-align:center}
+.footer{text-align:center;color:var(--muted);font-size:.8rem;padding:0 18px 24px;line-height:1.5}
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:#241414;color:white;padding:12px 18px;border-radius:999px;box-shadow:0 5px 20px #0003;z-index:5;display:none;max-width:90%;text-align:center}
+@media(max-width:520px){
+ .content{padding:12px 16px 26px}
+ .payment-grid{grid-template-columns:1fr}
+ .details{border-left:0;border-top:1px solid var(--line);padding:16px 0 0}
+ .qr{max-width:235px}
+ .steps{gap:8px;font-size:.85rem}
+ .card{padding:14px}
+ .amount{font-size:2.3rem}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="hero">
+    <div class="brand">YEAR 12<small>Graduation</small><em>PARTY</em></div>
+  </header>
+  <div class="paper-edge"></div>
+
+  <main id="paymentPage" class="content">
+    <h1>Pagamento do Convite</h1>
+    <p class="intro">Para confirmar a sua presença na nossa formatura, realize o pagamento do convite via Pix.</p>
+    <div class="deadline">Valor: <strong>R$ 350,00</strong> &nbsp; | &nbsp; <strong>Pagamento até dia 11 de novembro</strong></div>
+
+    <section class="card payment-grid" aria-label="Dados de pagamento Pix">
+      <div class="qr-wrap">
+        <img class="qr" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeoAAAHqAQAAAADjFjCXAAAESklEQVR4nO2dXW6rSBBGTw1IfmykLMBLwTuYJV1lSdkBLMULGAkeIzX65qF/gBvdF/Ao8bjqwcKBI4xUquqvquiYOGHjX2docNxxxx133HHHHXf8sbhlazHr8hm7pRMtjN1iMFv6SHZ73N0df1G8lyRNIN1bYM4fGljMbvNFjB0AjSRJe/zk3R1/UXwu4Wu8fqYjvXdAPzWSpsXoFdOlKf499O6OvzZuvyZgvEYgfBrjNWK3EGG0y9cqy8/68Y4/LT630N9bgEb0EzB2YL/0WVZz/+HdHX8FvOTKIGAGxq6JjNdPo5+Wln4A+o8WjZYv3Ua8p352x78Lz16XXaqB/uMN6+8XGfObjPktAk20fnqLBott8ad+dse/C0d7I6nUCSBIkiIaAA1BX2x46md3/Lvw5HX0Ul7DAcnN6KdGEKQiZMuJ9Df3OscP21p9S9FsCLGW7xqt9RINNNJAk5d17nWOH7cS6yI5rwL0EzWvxs11q0+61zl+3JKa0NhNghBb+o+3yHiNbZIP/b3dida5BViK9H3qZ3f8u/BthtUEKeoNRUgkSTFUhZETbuNqwvEzljPs1Civ65JLxZxm0+Ku6IrdJe51jh+1db2W9UIo0WygqtmicKWkZt3rHD9l2X+SXq3RbJNh47aklzVs42rC8TO2W9fVAp225ZNVzaajNBHlXuf4YSvrOoC1VJfiGllcaPW/IG3in3ud44es+Fgss3RS7UgA1LJwVrM7zL3O8eO4mV2SkDCzFg2zWXI9QimkDHOd5aSR3R53d8dfDd/0Jkqsy0drC2JNqYkYPMM6/gBc710jDeHTGLucUvVuZvnlibnFbrOVMfb54u9NOH7CatZcWjF3GAHS8Drhn5axwwRNNAAxd9BrsTTu+dzP7vh34SVVsnb6m91qrnT/qbqi5GTPsI4ftY2GpfQmpFIvWRd81H7FBnOvc/yQrX2HUqorwS1JignI88W1Get9WMfPWSkBU5VrDW41w+YWLLsRPPc6x8/hdgP0fo2sb/yXXQAuaZlnNxqZXXP+feTdHX81vNThQg140qbJX87GbR92CK4mHD9lpfpby8J1jGmd6swt2G0h2dd1jp+w1cPKW2DFr4Y60FQVLqwzn+51jp/GG5ldy15No7XYL8XclrCOMtqetnjy3XUcP2WblVt9FXEdo8tvi4W9hgCPdY6fMe3t90H1zfDwBGUYoFztXuf4IStqAsjNsKxmN2PsKa6FrDVW/3Ovc/wM3pdSsXQ3Y7xKeSfFtGunmd1YLI0bU2ooP+THO/5s+HaCPXckYt3nZN+MmJptTPRY5/hha3/7rvHvcgSxhRBbAeRNxMKEEaayH8BTP7vjPwef21QlSXtgp5JKt1jql/XTYtLd92B3/Ix92auzRDPBnIMb/cdFBhfl3RWDsIfc3fHXxP+gYVVG6+qbYWXrOt/nxPHTuPl/r3Pccccdd9xxxx3/X+D/Avo+Rs9D4GKdAAAAAElFTkSuQmCC" alt="QR Code Pix para pagamento de R$ 350,00">
+        <p class="qr-caption">Escaneie o QR Code pelo aplicativo do seu banco.</p>
+      </div>
+      <div class="details">
+        <p class="detail-label">Recebedor</p>
+        <p class="detail-value">Ana Beatriz Gabarra Sandoval</p>
+        <p class="detail-label">Chave Pix (CPF)</p>
+        <p class="detail-value">509.132.228-01</p>
+        <p class="detail-label">Valor</p>
+        <p class="amount">R$ 350,00</p>
+      </div>
+    </section>
+
+    <button class="btn" type="button" id="copyPix">▢ &nbsp; Copiar código Pix Copia e Cola</button>
+    <div class="key-field">
+      <code id="pixKey">50913222801 (CPF)</code>
+      <button class="icon-button" type="button" id="copyKey" aria-label="Copiar chave Pix" title="Copiar chave Pix">▢</button>
+    </div>
+    <p class="qr-caption" style="margin:7px auto 0;text-align:center">O código Pix Copia e Cola contém os dados do pagamento; a chave Pix é apenas o identificador da recebedora.</p>
+
+    <div class="note">
+      <ul>
+        <li>O valor do convite é fixo: R$ 350,00.</li>
+        <li>O pagamento deve ser realizado até dia 11 de novembro de 2026.</li>
+        <li>Após pagar, envie o comprovante pelo WhatsApp na próxima página.</li>
+      </ul>
+    </div>
+
+    <button class="btn" type="button" id="paidButton">✓ &nbsp; Já paguei o convite &nbsp; ›</button>
+    <p class="footer">Ao clicar, você irá para a página de envio do comprovante. Isso não confirma automaticamente o recebimento do pagamento.</p>
+  </main>
+
+  <main id="proofPage" class="content page2 hidden">
+    <h2>Envie seu comprovante</h2>
+    <p class="intro">Para confirmarmos sua presença, envie uma foto ou captura de tela do comprovante de pagamento e informe o nome completo de cada convidado incluído.</p>
+    <section class="card qr-wrap">
+      <img class="qr" src="data:image/png;base64,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" alt="QR Code para abrir a conversa de WhatsApp e enviar o comprovante">
+      <p class="qr-caption">Escaneie este QR Code com outro celular para abrir a conversa no WhatsApp.</p>
+    </section>
+    <a class="btn" id="openWhatsApp" href="https://wa.me/5516996094543?text=Oi%21%20Tudo%20bem%3F%20Confirmo%20a%20presen%C3%A7a%20de%3A%20...%20%28nome%20completo%20de%20cada%20convidado%29%0A%0AEstou%20enviando%20o%20comprovante%20do%20pagamento" target="_blank" rel="noopener">◉ &nbsp; Enviar comprovante pelo WhatsApp &nbsp; ›</a>
+    <p class="intro" style="font-size:.9rem">A mensagem inicial já estará preenchida. Complete os nomes, anexe o comprovante e toque em enviar.</p>
+    <div class="note success-note">Sua presença será confirmada pela organização após a conferência do pagamento e do comprovante.</div>
+    <button class="btn secondary" type="button" id="backButton">‹ &nbsp; Voltar para o pagamento</button>
+  </main>
+
+  <footer class="footer">YEAR 12 Graduation Party · 11/12/2026</footer>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+const PIX_PAYLOAD = "00020101021126330014BR.GOV.BCB.PIX0111509132228015204000053039865406350.005802BR5921ANA BEATRIZ GABARRA S6014RIBEIRAO PRETO62070503***63040EA4";
+const PIX_KEY = "50913222801";
+const WHATSAPP_LINK = "https://wa.me/5516996094543?text=Oi%21%20Tudo%20bem%3F%20Confirmo%20a%20presen%C3%A7a%20de%3A%20...%20%28nome%20completo%20de%20cada%20convidado%29%0A%0AEstou%20enviando%20o%20comprovante%20do%20pagamento";
+
+const toast = document.getElementById("toast");
+let toastTimer;
+function showToast(message) {
+  toast.textContent = message;
+  toast.style.display = "block";
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => { toast.style.display = "none"; }, 2600);
+}
+async function copyText(value, successMessage) {
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(value);
+    } else {
+      const textarea = document.createElement("textarea");
+      textarea.value = value;
+      textarea.style.position = "fixed";
+      textarea.style.opacity = "0";
+      document.body.appendChild(textarea);
+      textarea.select();
+      const ok = document.execCommand("copy");
+      textarea.remove();
+      if (!ok) throw new Error("copy failed");
+    }
+    showToast(successMessage);
+  } catch (e) {
+    window.prompt("Copie o texto abaixo:", value);
+  }
+}
+document.getElementById("copyPix").addEventListener("click", () => {
+  copyText(PIX_PAYLOAD, "Código Pix Copia e Cola copiado.");
+});
+document.getElementById("copyKey").addEventListener("click", () => {
+  copyText(PIX_KEY, "Chave Pix copiada.");
+});
+document.getElementById("paidButton").addEventListener("click", () => {
+  document.getElementById("paymentPage").classList.add("hidden");
+  document.getElementById("proofPage").classList.remove("hidden");
+  window.scrollTo({top:0, behavior:"smooth"});
+  history.replaceState(null, "", "#comprovante");
+});
+document.getElementById("backButton").addEventListener("click", () => {
+  document.getElementById("proofPage").classList.add("hidden");
+  document.getElementById("paymentPage").classList.remove("hidden");
+  window.scrollTo({top:0, behavior:"smooth"});
+  history.replaceState(null, "", "#pagamento");
+});
+document.getElementById("openWhatsApp").addEventListener("click", () => {
+  // Link opens WhatsApp; the visitor must still attach and send the receipt.
+});
+if (location.hash === "#comprovante") {
+  document.getElementById("paymentPage").classList.add("hidden");
+  document.getElementById("proofPage").classList.remove("hidden");
+}
+</script>
+</body>
+</html>
