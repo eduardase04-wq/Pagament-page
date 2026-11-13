@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#5b0b10">
+<title>Year 12 Graduation Party | Pagamento do convite</title>
+<style>
+:root {
+  --wine:#5b0b10; --wine-dark:#3d070a; --cream:#f7f0e5; --paper:#fffaf2;
+  --beige:#ead8c2; --ink:#241414; --muted:#725d55; --line:#ddc8b0;
+  --green:#52764b; --gold:#a77a35;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#eee9e1;color:var(--ink);font-family:Arial,Helvetica,sans-serif}
+button,a{font:inherit}
+button{cursor:pointer}
+.page{max-width:760px;margin:0 auto;background:var(--cream);min-height:100vh;box-shadow:0 0 30px #00000012}
+.hero{background:radial-gradient(ellipse at 50% 120%,#7b1b20 0,#5b0b10 62%,#390508 100%);color:#f9efdf;text-align:center;padding:25px 20px 34px;position:relative;overflow:hidden}
+.hero:before,.hero:after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.15;background-image:repeating-linear-gradient(135deg,transparent 0 32px,#e8d6c4 33px,transparent 34px 70px)}
+.hero:after{opacity:.08;background:radial-gradient(circle at 20% 30%,#f7e9d5 0 1px,transparent 2px);background-size:27px 27px}
+.brand{position:relative;z-index:1;font-family:Georgia,'Times New Roman',serif;letter-spacing:.08em;font-size:clamp(2.3rem,9vw,4.2rem);line-height:.9;font-weight:bold}
+.brand small{display:block;font-family:cursive;font-style:italic;font-size:clamp(1.5rem,6vw,2.4rem);font-weight:normal;letter-spacing:0;margin-top:8px}
+.brand em{display:block;font-family:Georgia,serif;font-style:normal;font-size:.27em;letter-spacing:.28em;margin-top:8px}
+.paper-edge{height:20px;background:var(--cream);margin-top:-2px;clip-path:polygon(0 35%,7% 55%,14% 35%,23% 65%,32% 30%,41% 58%,51% 26%,61% 58%,70% 34%,81% 63%,90% 32%,100% 48%,100% 100%,0 100%)}
+.content{padding:16px clamp(16px,4vw,34px) 32px}
+h1,h2{font-family:Georgia,'Times New Roman',serif;color:var(--wine);text-align:center;font-weight:normal}
+h1{font-size:clamp(2rem,6vw,3rem);margin:2px 0 10px}
+h2{font-size:clamp(1.8rem,5vw,2.5rem);margin:4px 0 10px}
+.intro{text-align:center;line-height:1.5;margin:0 auto 18px;max-width:560px;font-size:1.03rem}
+.lots{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0}
+.lot{background:#fffaf3;border:1px solid var(--line);border-radius:16px;padding:16px;text-align:center;position:relative;transition:border-color .2s,box-shadow .2s}
+.lot.active{border:2px solid var(--wine);box-shadow:0 5px 18px #5b0b1017;padding:15px}
+.lot-tag{display:inline-block;border-radius:999px;padding:5px 10px;font-size:.72rem;font-weight:bold;letter-spacing:.08em;background:#ead8c2;color:var(--wine)}
+.lot.active .lot-tag{background:var(--wine);color:#fff8ed}
+.lot-price{font-family:Georgia,'Times New Roman',serif;font-size:clamp(2rem,6vw,2.7rem);color:var(--wine);margin:8px 0 4px}
+.lot-date{font-size:.9rem;line-height:1.4;color:var(--muted)}
+.lot-status{font-size:.72rem;font-weight:bold;letter-spacing:.05em;margin-top:9px;color:var(--green);min-height:1em}
+.current-banner{background:#eddfcd;border:1px solid #ddc6ad;border-radius:14px;text-align:center;padding:13px 15px;margin:0 0 18px;line-height:1.5}
+.current-banner strong{color:var(--wine)}
+.current-price{display:block;font-family:Georgia,serif;font-size:1.8rem;color:var(--wine);margin-top:3px}
+.card{background:#fffaf3d9;border:1px solid #e6d5c3;border-radius:18px;padding:18px;margin:14px 0;box-shadow:0 5px 18px #4b1b1010}
+.payment-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:center}
+.qr-wrap{text-align:center}
+.qr{display:block;width:min(100%,250px);height:auto;margin:0 auto 10px;border-radius:12px;background:#fff;padding:8px}
+.qr-caption{font-size:.9rem;line-height:1.45;margin:0 auto;max-width:260px;color:var(--muted)}
+.details{border-left:1px solid var(--line);padding-left:18px;overflow-wrap:anywhere}
+.detail-label{font-size:.92rem;font-weight:bold;color:var(--wine);margin:0 0 5px}
+.detail-value{font-size:1rem;line-height:1.45;margin:0 0 17px}
+.amount{font-family:Georgia,'Times New Roman',serif;color:var(--wine);font-size:clamp(2rem,6vw,2.8rem);margin:4px 0 0;white-space:nowrap}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;border:0;border-radius:13px;padding:16px 18px;background:var(--wine);color:#fff8ed;font-weight:bold;text-decoration:none;text-align:center;margin:12px 0;min-height:54px;transition:transform .12s,background .12s}
+.btn:hover{background:#74141a}.btn:active{transform:scale(.99)}
+.btn.secondary{background:#eddfcd;color:var(--wine);border:1px solid #ddc6ad}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.key-field{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:#fffaf3;overflow-wrap:anywhere}
+.key-field code{font-family:Arial,Helvetica,sans-serif;flex:1;min-width:0;font-size:.95rem}
+.icon-button{background:transparent;border:0;color:var(--wine);font-size:1.25rem;padding:4px}
+.code-details{margin:14px 0 4px;border:1px solid var(--line);border-radius:12px;background:#fffaf3;padding:12px}
+.code-details summary{cursor:pointer;color:var(--wine);font-weight:bold;line-height:1.4}
+.code-text{width:100%;min-height:86px;margin-top:10px;padding:10px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);font:12px/1.5 monospace;overflow-wrap:anywhere;resize:vertical}
+.note{background:#f0e0d0;border-radius:14px;padding:14px 16px;font-size:.9rem;line-height:1.55;margin:18px 0}
+.note ul{margin:0;padding-left:19px}
+.note strong{color:var(--wine)}
+.steps-title{display:flex;align-items:center;gap:12px;justify-content:center;color:var(--wine);font-family:Georgia,serif;font-size:1.35rem;margin:28px 0 16px}
+.steps-title:before,.steps-title:after{content:"";height:1px;background:var(--wine);flex:1}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;text-align:center;line-height:1.45}
+.step-num{width:34px;height:34px;border-radius:50%;background:#e3c9a9;display:grid;place-items:center;margin:0 auto 8px;font-family:Georgia,serif;font-size:1.2rem}
+.hidden{display:none!important}
+.page2 .qr{max-width:270px;margin-top:14px}
+.success-note{text-align:center}
+.footer{text-align:center;color:var(--muted);font-size:.8rem;padding:0 18px 24px;line-height:1.5}
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:#241414;color:white;padding:12px 18px;border-radius:999px;box-shadow:0 5px 20px #0003;z-index:5;display:none;max-width:90%;text-align:center}
+@media(max-width:520px){
+ .content{padding:12px 16px 26px}
+ .payment-grid{grid-template-columns:1fr}
+ .details{border-left:0;border-top:1px solid var(--line);padding:16px 0 0}
+ .qr{max-width:235px}
+ .steps{gap:8px;font-size:.85rem}
+ .card{padding:14px}
+ .amount{font-size:2.3rem}
+ .lots{gap:8px}
+ .lot{padding:12px 8px}
+ .lot.active{padding:11px 7px}
+ .lot-date{font-size:.82rem}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="hero">
+    <div class="brand">YEAR 12<small>Graduation</small><em>PARTY</em></div>
+  </header>
+  <div class="paper-edge"></div>
+
+  <main id="paymentPage" class="content">
+    <h1>Pagamento do Convite</h1>
+    <p class="intro">Garanta sua presença na nossa formatura realizando o pagamento do convite via Pix.</p>
+
+    <section class="lots" aria-label="Lotes e valores dos convites">
+      <article class="lot" id="firstLot">
+        <span class="lot-tag">1º LOTE</span>
+        <div class="lot-price">R$ 350,00</div>
+        <div class="lot-date">Até 30 de novembro de 2026</div>
+        <div class="lot-status" id="firstStatus"></div>
+      </article>
+      <article class="lot" id="secondLot">
+        <span class="lot-tag">2º LOTE</span>
+        <div class="lot-price">R$ 500,00</div>
+        <div class="lot-date">De 1º a 7 de dezembro de 2026</div>
+        <div class="lot-status" id="secondStatus"></div>
+      </article>
+    </section>
+
+    <div class="current-banner" id="currentLotNotice" aria-live="polite">
+      <strong>Valor do lote vigente</strong>
+      <span class="current-price">R$ 350,00</span>
+      Confira o valor indicado antes de confirmar o Pix.
+    </div>
+
+    <section class="card payment-grid" aria-label="Dados de pagamento Pix">
+      <div class="qr-wrap">
+        <img class="qr" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAq4AAAKuAQAAAABIhKOrAAAE1klEQVR4nO3dTa6rOBCG4a+aSD0kOyI7u+qdkaWcHcCwJVD1wAaXHY7u7Z/jo7ReTyIc8ihiULKLsm2uL2j7b1+hSrCwsLCwsLCwsLCwsLCwsLCwsP+weWqxa3LfNLq7b7FT0uizSufo7hp8CT8dkra910OAhYV9U/aMYDn2uC+a0ocUO3WGruHlavJGIYLBwsJ2Zlczs1v80jdJT3v50ejzEd1yj5mZPS7Z/7LBwsLC/hI7+pzi0g83s3uaRUpSnFq2Vz9n/12DhYWFje123b3fpMm138ZFcmm9S5LGRdJ5td6lT8rJ3ushwMLCvil7nQfT4J5miovOcVZO7+fv3Mst5MFgYWG/hb1+F5nj0q9+lEYEg4WF7cgeEaxpm0L9xHFnHoPlNlz/kggGCwvbja1mkbnY6xxZ5aujtqKtAMvVYeMxpySCwcLC9mVDBFuOqzPJdRmejszX+d0itXcSwWBhYXuwquNSCU+hNP/4TtKRtC+Z/NRZY0QwWFjYLmxVTfE07Tb605QLJwaXng9PnZ5uaeonhk16mu83SbJh+9J/CwsLC1u1YwyW21WSSzpS+GMpsZB0Jvv9SJUxBoOFhe3JvkawM6/v57wxzClL5suPqeW5xmimmgIWFvZ72Jzr2tP6xt3uelq9lluDf9gPt5ukyfMKSnf/sEcoeu3zb2FhYWGlWA+2pI6x5Ofr8VmpBxvDMG2I00fGYLCwsD3ZtlQit6rSvk5yxR/XQe68IoLBwsJ2Ya/GYKVqNWTF5vTtdDUimxmDwcLCfgdbXh/G6WOpyR+b6DaHzvw7lVoxIhgsLGxPthqDTdVwq10JGRdLxsHXcigz7yJhYWG7slUebE5dLztOpE6vyyjqxUXnW0siGCwsbDf2qMm3VIWfx1u+2+iSDdt6n2Yrt6TO0fMtT/PBV5tcg1f7Hb7XQ4CFhX1TNuTB6nzWIrWvJLerLH/6QdnFgjEYLCxsN7aqkZiqTXYkqSTt5+NK9TqicOfMLBIWFrYr+7rD4SIpvossyyPb4tV6q1YvRRVEMFhY2K5sXiRkt3LU7cucMg2+ysFqo8/yP+3e/9/CwsLCNuxqD/mm1cy0212S/e4fZhZPW3tamT6u9kjzxj9ejpR824cACwv7Tmx72tp+G11pYzDJd5Om2YZNej5ckibPe4DlN5PHgWy75ZPYvvTfwsLCwsbW7HDo0mpn/YRXNRI2bOtd0m5S6ZRWm9yk1djhEBYWti/bVLQ2uft2o8Ow9fTLhyTeRcLCwnZlm5M+mg1Yw4tGD8uJVO70sNFhaUQwWFjYHmw7BvMSrOJaoeX4aINVrTAGg4WF7cm25V25c4sFqqpqWF+KXpU6F4l6MFhY2K7s9Zndavef8CPldYauPGirt2plDAYLC9uT/WTn1Wr6GDP5JXSFvRAnZwwGCwv7DWybwaoT89XBt/VpHpcTTcZgsLCwPdmrd5HTmfLK7TxKrT5fLSTOWBcJCwv7Dex1BIvfzc1WrSWTP74kxxiDwcLC9mQ/GYPV20ufSfsl7gHWvKAMlWNEMFhY2N5syHUprfOWFA+3zdtQ7GZmFm/JWbGwwPttHwIsLOw7sdfvIi/3aL1O9lentJEHg4WF7cma//yev9/293oIsLCwsLCwsLCwsLCwsLCwsLD/e/YvLW5Ad6XYbcwAAAAASUVORK5CYII=" alt="QR Code Pix oficial da Ana Beatriz Gabarra Sandoval">
+        <p class="qr-caption">Escaneie o QR Code pelo aplicativo do seu banco. Este código não contém valor: informe o valor do lote vigente.</p>
+      </div>
+      <div class="details">
+        <p class="detail-label">Recebedora</p>
+        <p class="detail-value">Ana Beatriz Gabarra Sandoval</p>
+        <p class="detail-label">Banco</p>
+        <p class="detail-value">Bradesco</p>
+        <p class="detail-label">Chave Pix (CPF)</p>
+        <p class="detail-value">509.132.228-01</p>
+        <p class="detail-label">Valor a informar no banco</p>
+        <p class="amount" id="amountToPay">R$ 350,00</p>
+      </div>
+    </section>
+
+    <button class="btn" type="button" id="copyPix">▢ &nbsp; Copiar Pix Copia e Cola oficial</button>
+    <p class="qr-caption" style="margin:0 auto 10px;text-align:center">Depois de colar no aplicativo bancário, informe manualmente o valor do lote vigente.</p>
+
+    <details class="code-details">
+      <summary>Ver código Pix Copia e Cola oficial</summary>
+      <textarea class="code-text" id="pixCodeField" readonly>00020126330014BR.GOV.BCB.PIX0111509132228015204000053039865802BR5925ANA BEATRIZ GABARRA SANDO6014RIBEIRAO PRETO62210517IngressoFormatura6304F080</textarea>
+      <button class="btn secondary" type="button" id="copyPixFromField">Copiar código</button>
+    </details>
+
+    <div class="key-field" style="margin-top:14px">
+      <code id="pixKey">509.132.228-01 (CPF)</code>
+      <button class="icon-button" type="button" id="copyKey" aria-label="Copiar chave Pix" title="Copiar chave Pix">▢</button>
+    </div>
+
+    <div class="note">
+      <strong>Antes de confirmar o pagamento:</strong>
+      <ul>
+        <li>Confira se o recebedor é <strong>Ana Beatriz Gabarra Sandoval</strong>.</li>
+        <li>Informe o valor correspondente ao lote: <strong>R$ 350,00 até 30/11</strong> ou <strong>R$ 500,00 de 01/12 a 07/12</strong>.</li>
+        <li>O QR Code e o Pix Copia e Cola são estáticos e não preenchem o valor automaticamente.</li>
+        <li>Após pagar, envie o comprovante pelo WhatsApp na próxima página.</li>
+      </ul>
+    </div>
+
+    <button class="btn" type="button" id="paidButton">✓ &nbsp; Já paguei o convite &nbsp; ›</button>
+    <p class="footer">Ao clicar, você irá para a página de envio do comprovante. Isso não confirma automaticamente o recebimento do pagamento.</p>
+  </main>
+
+  <main id="proofPage" class="content page2 hidden">
+    <h2>Envie seu comprovante</h2>
+    <p class="intro">Para confirmarmos sua presença, envie uma foto ou captura de tela do comprovante de pagamento e informe o nome completo de cada convidado incluído.</p>
+    <section class="card qr-wrap">
+      <img class="qr" src="data:image/png;base64,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" alt="QR Code para abrir a conversa de WhatsApp e enviar o comprovante">
+      <p class="qr-caption">Escaneie este QR Code com outro celular para abrir a conversa no WhatsApp.</p>
+    </section>
+    <a class="btn" id="openWhatsApp" href="https://wa.me/5516996094543?text=Oi%21%20Tudo%20bem%3F%20Confirmo%20a%20presen%C3%A7a%20de%3A%20...%20%28nome%20completo%20de%20cada%20convidado%29%0A%0AEstou%20enviando%20o%20comprovante%20do%20pagamento" target="_blank" rel="noopener">◉ &nbsp; Enviar comprovante pelo WhatsApp &nbsp; ›</a>
+    <p class="intro" style="font-size:.9rem">A mensagem inicial já estará preenchida. Complete os nomes, anexe o comprovante e toque em enviar.</p>
+    <div class="note success-note">Sua presença será confirmada pela organização após a conferência do pagamento e do comprovante.</div>
+    <button class="btn secondary" type="button" id="backButton">‹ &nbsp; Voltar para o pagamento</button>
+  </main>
+
+  <footer class="footer">YEAR 12 Graduation Party · 11/12/2026</footer>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+const PIX_PAYLOAD = "00020126330014BR.GOV.BCB.PIX0111509132228015204000053039865802BR5925ANA BEATRIZ GABARRA SANDO6014RIBEIRAO PRETO62210517IngressoFormatura6304F080";
+const PIX_KEY = "50913222801";
+const WHATSAPP_LINK = "https://wa.me/5516996094543?text=Oi%21%20Tudo%20bem%3F%20Confirmo%20a%20presen%C3%A7a%20de%3A%20...%20%28nome%20completo%20de%20cada%20convidado%29%0A%0AEstou%20enviando%20o%20comprovante%20do%20pagamento";
+
+const toast = document.getElementById("toast");
+let toastTimer;
+function showToast(message) {
+  toast.textContent = message;
+  toast.style.display = "block";
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => { toast.style.display = "none"; }, 2600);
+}
+async function copyText(value, successMessage) {
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(value);
+    } else {
+      const textarea = document.createElement("textarea");
+      textarea.value = value;
+      textarea.style.position = "fixed";
+      textarea.style.opacity = "0";
+      document.body.appendChild(textarea);
+      textarea.select();
+      const ok = document.execCommand("copy");
+      textarea.remove();
+      if (!ok) throw new Error("copy failed");
+    }
+    showToast(successMessage);
+  } catch (e) {
+    window.prompt("Copie o texto abaixo:", value);
+  }
+}
+document.getElementById("copyPix").addEventListener("click", () => {
+  copyText(PIX_PAYLOAD, "Pix Copia e Cola oficial copiado.");
+});
+document.getElementById("copyPixFromField").addEventListener("click", () => {
+  copyText(PIX_PAYLOAD, "Código Pix copiado.");
+});
+document.getElementById("copyKey").addEventListener("click", () => {
+  copyText(PIX_KEY, "Chave Pix copiada.");
+});
+
+function updateCurrentLot() {
+  const todayDate = new Date();
+  const today = new Date(todayDate.getFullYear(), todayDate.getMonth(), todayDate.getDate());
+  const firstLotEnd = new Date(2026, 10, 30);
+  const secondLotStart = new Date(2026, 11, 1);
+  const secondLotEnd = new Date(2026, 11, 7);
+  const firstCard = document.getElementById("firstLot");
+  const secondCard = document.getElementById("secondLot");
+  const firstStatus = document.getElementById("firstStatus");
+  const secondStatus = document.getElementById("secondStatus");
+  const notice = document.getElementById("currentLotNotice");
+  const amount = document.getElementById("amountToPay");
+
+  firstCard.classList.remove("active");
+  secondCard.classList.remove("active");
+  firstStatus.textContent = "";
+  secondStatus.textContent = "";
+
+  if (today <= firstLotEnd) {
+    firstCard.classList.add("active");
+    firstStatus.textContent = "LOTE VIGENTE";
+    secondStatus.textContent = "PRÓXIMO LOTE";
+    notice.innerHTML = '<strong>1º lote vigente — até 30 de novembro</strong><span class="current-price">R$ 350,00</span>Digite este valor no aplicativo do banco.';
+    amount.textContent = "R$ 350,00";
+  } else if (today >= secondLotStart && today <= secondLotEnd) {
+    secondCard.classList.add("active");
+    firstStatus.textContent = "LOTE ENCERRADO";
+    secondStatus.textContent = "LOTE VIGENTE";
+    notice.innerHTML = '<strong>2º lote vigente — até 7 de dezembro</strong><span class="current-price">R$ 500,00</span>Digite este valor no aplicativo do banco.';
+    amount.textContent = "R$ 500,00";
+  } else {
+    firstStatus.textContent = "LOTE ENCERRADO";
+    secondStatus.textContent = "LOTE ENCERRADO";
+    notice.innerHTML = '<strong>Período de venda encerrado</strong><span class="current-price">Consulte a organização</span>Entre em contato antes de realizar qualquer pagamento.';
+    amount.textContent = "Consulte a organização";
+    document.getElementById("copyPix").disabled = true;
+    document.getElementById("copyPixFromField").disabled = true;
+  }
+}
+updateCurrentLot();
+
+document.getElementById("paidButton").addEventListener("click", () => {
+  document.getElementById("paymentPage").classList.add("hidden");
+  document.getElementById("proofPage").classList.remove("hidden");
+  window.scrollTo({top:0, behavior:"smooth"});
+  history.replaceState(null, "", "#comprovante");
+});
+document.getElementById("backButton").addEventListener("click", () => {
+  document.getElementById("proofPage").classList.add("hidden");
+  document.getElementById("paymentPage").classList.remove("hidden");
+  window.scrollTo({top:0, behavior:"smooth"});
+  history.replaceState(null, "", "#pagamento");
+});
+if (location.hash === "#comprovante") {
+  document.getElementById("paymentPage").classList.add("hidden");
+  document.getElementById("proofPage").classList.remove("hidden");
+}
+</script>
+</body>
+</html>
